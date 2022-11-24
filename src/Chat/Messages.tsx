@@ -6,6 +6,7 @@ import MessageText from './MessageText';
 import MessageQuote from './MessageQuote';
 import { MessageStyle } from './style';
 import { MessagesProps, MessageProps } from './types';
+import { EvaIcon } from '../Icon';
 
 const Messages: React.FC<MessagesProps> = (props) => {
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -55,8 +56,8 @@ const Messages: React.FC<MessagesProps> = (props) => {
         {props.messages.map((msg, index) => (
           <MessageStyle reply={msg.reply} key={index}>
             {!msg.reply && (
-              <div className="avatar" style={{ backgroundImage: `url(${msg.avatar})` }}>
-                {!msg.avatar && getInitials(msg.sender ?? '')}
+              <div className="avatar">
+                <EvaIcon name="thumbs-up" />
               </div>
             )}
             <div className="message">{getMessageComponent(msg)}</div>
